@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGROSYNAPSE PRO | Conexão Campo-Cidade — Agrinho 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="accessibility-hub" role="complementary" aria-label="Painel de Acessibilidade">
+        <button class="a11y-trigger" id="a11y-toggle" aria-expanded="false" title="Menu de Acessibilidade">⚙️</button>
+        <div class="a11y-menu" id="a11y-menu">
+            <button id="theme-switcher">🌓 Alternar Modo</button>
+            <button id="font-up">A+ Aumentar Texto</button>
+            <button id="font-down">A- Diminuir Texto</button>
+            <button id="screen-reader-sim">🔊 Ler Resumo da Tela</button>
+        </div>
+    </div>
+
+    <div id="modal-perfil" class="modal-overlay hidden">
+        <div class="modal-card">
+            <h3>Personalizar Seu Perfil de Usuário</h3>
+            <p>Altere seus dados de simulação e interação na plataforma:</p>
+            <div class="input-block">
+                <label for="edit-nome">Seu Nome ou Instituição</label>
+                <input type="text" id="edit-nome" value="Visitante do Hub">
+            </div>
+            <div class="input-block">
+                <label for="edit-perfil-tipo">Sua Categoria:</label>
+                <select id="edit-perfil-tipo">
+                    <option value="Estudante / Jovem">Estudante / Jovem</option>
+                    <option value="Produtor Rural">Produtor Rural / Agricultor</option>
+                    <option value="Membro da Comunidade">Cidadão / Comunidade Urbana</option>
+                </select>
+            </div>
+            <div class="input-block">
+                <label for="edit-bio">Sua Biografia / Interesse</label>
+                <textarea id="edit-bio"
+                    rows="3">Interessado em sustentabilidade e na integração entre o desenvolvimento do campo e o consumo consciente nas cidades.</textarea>
+            </div>
+            <div class="modal-actions">
+                <button id="btn-salvar-perfil" class="action-btn">Salvar Perfil</button>
+                <button id="btn-fechar-perfil" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+
+        <aside class="app-sidebar">
+            <div class="brand">
+                <div class="brand-icon">🌱</div>
+                <div>
+                    <h2>AgroSynapse Pro</h2>
+                    <span>Conexão Campo-Cidade</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-link active" data-target="view-home"><span>🏠</span> Página Inicial</button>
+                <button class="nav-link" data-target="view-agrinho"><span>🌾</span> Tema Agrinho 2026</button>
+                <button class="nav-link" data-target="view-dashboard"><span>📊</span> Hub de Monitoramento</button>
+                <button class="nav-link" data-target="view-simulador"><span>🎛️</span> Central de Simulação</button>
+                <button class="nav-link" data-target="view-curiosidades"><span>💡</span> Curiosidades Agro</button>
+                <button class="nav-link" data-target="view-educativo"><span>📖</span> Dicionário Prático</button>
+                <button class="nav-link" data-target="view-sobre"><span>✨</span> Manifesto e Autoria</button>
+            </nav>
+
+            <div class="author-card clickable" id="trigger-perfil-modal" title="Clique para editar seu perfil">
+                <div class="author-avatar" id="perf-inicial">VH</div>
+                <div class="author-info">
+                    <h4 id="perf-nome">Visitante do Hub</h4>
+                    <p id="perf-tipo">Estudante / Jovem</p>
+                </div>
+                <span class="edit-hint">✏️ Editar</span>
+            </div>
+
+            <div class="fixed-credits">
+                <span>Desenvolvido por:</span>
+                <strong>Ester Locatelli & Amanda Groff</strong>
+            </div>
+        </aside>
+
+        <main class="app-main">
+
+            <div id="view-home" class="app-view active">
+                <header class="app-header">
+                    <div class="header-title">
+                        <h1>Bem-vindo ao AgroSynapse Pro</h1>
+                        <p class="tts-text">Conectando a ciência e a tecnologia do campo com a consciência e a rotina do
+                            ambiente urbano.</p>
+                    </div>
+                </header>
+
+                <section class="welcome-hero">
+                    <h2>Uma ferramenta funcional para a nossa comunidade. Escolha seu perfil:</h2>
+                    <div class="audience-grid">
+                        <div class="audience-card student">
+                            <div class="icon">🎓</div>
+                            <h3>Para Jovens e Alunos</h3>
+                            <p>Descubra como a matemática e a tecnologia de dados transformam o cuidado com o solo.
+                                Aprenda Ecologia de forma prática e interativa para a escola.</p>
+                        </div>
+                        <div class="audience-card farmer">
+                            <div class="icon">🚜</div>
+                            <h3>Para Agricultores</h3>
+                            <p>Monitore médias simuladas de eficiência hídrica por região do país, entenda as perdas por
+                                frete longo e veja como otimizar a sua distribuição regional.</p>
+                        </div>
+                        <div class="audience-card citizen">
+                            <div class="icon">🏙️</div>
+                            <h3>Para a Comunidade</h3>
+                            <p>Veja o impacto direto do desperdício de alimentos nas cidades, compreenda a logística por
+                                trás das prateleiras e apoie circuitos curtos de comércio.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="shortcut-banner">
+                    <div>
+                        <h3>Pronto para testar o equilíbrio ecológico na prática?</h3>
+                        <p>Acesse nosso simulador avançado para calcular as emissões de gases e o consumo de água de
+                            fretes rurais!</p>
+                    </div>
+                    <button class="btn-shortcut" data-jump="view-simulador">Ir para o Simulador ➔</button>
+                </div>
+            </div>
+
+            <div id="view-agrinho" class="app-view">
+                <header class="app-header">
+                    <div class="header-title">
+                        <h1>Proposta Agrinho 2026</h1>
+                        <p class="tts-text">Análise aprofundada do tema oficial e os impactos da sustentabilidade
+                            moderna.</p>
+                    </div>
+                </header>
+
+                <section class="theme-banner">
+                    <span class="theme-badge">Tema Oficial</span>
+                    <h2>"Agro forte, futuro sustentável: equilíbrio entre produção e meio ambiente"</h2>
+                </section>
+
+                <div class="dictionary-grid">
+                    <div class="concept-card theme-border">
+                        <div class="concept-badge">01. O Agro Forte</div>
+                        <h3>Produtividade de Alimentos</h3>
+                        <p>O campo precisa produzir em grande escala utilizando biotecnologia e maquinários eficientes
+                            para alimentar as populações urbanas que crescem a cada dia.</p>
+                    </div>
+                    <div class="concept-card theme-border">
+                        <div class="concept-badge">02. Futuro Sustentável</div>
+                        <h3>Preservação de Recursos</h3>
+                        <p>Não há futuro sem água limpa, polinizadores ativos e solo fértil. A sustentabilidade garante
+                            que a produção de hoje não destrua as safras de amanhã.</p>
+                    </div>
+                    <div class="concept-card theme-border">
+                        <div class="concept-badge">03. O Equilíbrio</div>
+                        <h3>A Solução Tecnológica</h3>
+                        <p>O equilíbrio não se alcança parando a produção, mas aplicando sensores inteligentes, manejo
+                            ecológico e inteligência de dados para produzir mais usando menos recursos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-dashboard" class="app-view">
+                <header class="app-header">
+                    <div class="header-title">
+                        <h1>Hub de Monitoramento Agro-Urbano</h1>
+                        <p class="tts-text">Dados simulados de impacto ambiental baseados nos ecossistemas e biomas
+                            brasileiros.</p>
+                    </div>
+                    <div class="region-selector-wrapper">
+                        <label for="select-no-regiao">📍 Selecionar Macrorregião:</label>
+                        <select id="select-no-regiao" class="select-region">
+                            <option value="sul" selected>Região Sul (Cooperativas e Plantio Direto no PR)</option>
+                            <option value="sudeste">Região Sudeste (Cinturões Verdes Próximos às Capitais)</option>
+                            <option value="centro-oeste">Região Centro-Oeste (Larga Escala de Grãos e Logística)
+                            </option>
+                            <option value="nordeste">Região Nordeste (Sistemas Avançados de Irrigação)</option>
+                            <option value="norte">Região Norte (Sistemas Agroflorestais Regenerativos)</option>
+                        </select>
+                    </div>
+                </header>
+
+                <section class="metrics-row">
+                    <div class="metric-card">
+                        <div class="card-meta">
+                            <span>Eficiência Hídrica do Solo <span class="tooltip-icon"
+                                    data-tip="Aproveitamento real da água da chuva e irrigação.">?</span></span>
+                            <span class="trend positive" id="dash-trend-agua">+14.2%</span>
+                        </div>
+                        <h3 id="dash-val-agua">92.4%</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="dash-bar-agua" style="width: 92.4%"></div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="card-meta">
+                            <span>Sequestro de Carbono Florestal <span class="tooltip-icon"
+                                    data-tip="Toneladas de CO2 retidas por hectare através de plantio direto e matas ciliares.">?</span></span>
+                            <span class="trend positive">Estável</span>
+                        </div>
+                        <h3>4.2 <small>t/hectare</small></h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill success" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="card-meta">
+                            <span>Índice de Consciência Urbana</span>
+                            <span class="trend positive">Excelente</span>
+                        </div>
+                        <h3>88/100</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill success" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="about-grid">
+                    <div class="concept-card">
+                        <h3>Por que monitorar a eficiência hídrica?</h3>
+                        <p>Tanto para agricultores quanto para a comunidade nas cidades, entender a retenção de água no
+                            solo ajuda a prever secas regionais e evita o desperdício em sistemas automáticos de
+                            irrigação por gotejamento.</p>
+                    </div>
+                    <div class="concept-card">
+                        <h3>O papel do sequestro de CO₂</h3>
+                        <p>O transporte de alimentos do campo até os supermercados consome muito combustível. Quando o
+                            agricultor mantém árvores plantadas na fazenda, ele compensa essa poluição urbanizada,
+                            criando o equilíbrio perfeito.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-simulador" class="app-view">
+                <header class="app-header">
+                    <div class="header-title">
+                        <h1>Central Analítica de Impacto</h1>
+                        <p class="tts-text">Configure os parâmetros operacionais da cadeia de suprimentos para mensurar
+                            a pegada ambiental.</p>
+                    </div>
+                </header>
+
+                <div class="simulator-grid">
+                    <div class="control-panel">
+                        <h3>⚙️ Parâmetros Logísticos</h3>
+                        <form id="matrix-form" onsubmit="return false;">
+                            <div class="input-block">
+                                <label for="input-cultura">Tipo de Cultivo e Abastecimento</label>
+                                <select id="input-cultura">
+                                    <option value="hortas" data-agua="30" data-carbono="0.05">Horticultura Local
+                                        (Cinturões Urbanos Próximos)</option>
+                                    <option value="graos" data-agua="240" data-carbono="0.40">Produção Agro-Tecnológica
+                                        de Grãos em Larga Escala</option>
+                                    <option value="frutas" data-agua="160" data-carbono="0.18">Fruticultura Comercial
+                                        Climatizada</option>
+                                </select>
+                            </div>
+
+                            <div class="input-block">
+                                <label for="range-distancia">Distância de Transporte: <span
+                                        id="val-distancia">180</span> km</label>
+                                <input type="range" id="range-distancia" min="10" max="1500" value="180" step="10">
+                            </div>
+
+                            <div class="input-block">
+                                <label for="input-toneladas">Carga Transportada (Toneladas)</label>
+                                <input type="number" id="input-toneladas" min="1" value="60">
+                            </div>
+
+                            <div class="input-block">
+                                <label for="select-transporte">Modo de Distribuição</label>
+                                <select id="select-transporte">
+                                    <option value="eletrico" data-fator="0.01">Veículos Elétricos de Carga (Emissão
+                                        Praticamente Nula)</option>
+                                    <option value="euro6" data-fator="0.12">Caminhões de Alta Eficiência Rodoviária
+                                        (Biodiesel Euro 6)</option>
+                                    <option value="antigo" data-fator="0.29">Logística Rodoviária Tradicional (Alta
+                                        Queima de Diesel)</option>
+                                </select>
+                            </div>
+
+                            <div class="input-block">
+                                <label for="select-problema">Foco do Relatório Analítico</label>
+                                <select id="select-problema">
+                                    <option value="carbono">Emissão Atmosférica de Gases (CO₂)</option>
+                                    <option value="agua">Consumo Hídrico Embutido na Produção</option>
+                                    <option value="desperdicio">Perda de Alimentos por Tempo de Viagem</option>
+                                </select>
+                            </div>
+
+                            <button type="button" id="btn-processar" class="action-btn">Calcular Impacto de
+                                Cadeia</button>
+                        </form>
+                    </div>
+
+                    <div class="analytics-panel">
+                        <div id="empty-state" class="empty-state">
+                            <p>Modifique as variáveis ao lado e acione o botão para gerar as projeções matemáticas e
+                                ecológicas instantaneamente.</p>
+                        </div>
+
+                        <div id="analytics-content" class="analytics-content hidden">
+                            <div class="analytics-header">
+                                <h3>📊 Diagnóstico de Sustentabilidade</h3>
+                                <span class="badge-status" id="output-rating">Processado</span>
+                            </div>
+
+                            <div class="chart-container">
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-info">
+                                        <span>Emissão de Carbono Gerada (Toneladas)</span>
+                                        <strong id="out-co2">0.00</strong>
+                                    </div>
+                                    <div class="chart-track">
+                                        <div id="bar-co2" class="chart-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="chart-bar-wrapper">
+                                    <div class="chart-info">
+                                        <span>Água Total Consumida no Lote (Milhões de Litros)</span>
+                                        <strong id="out-agua">0.00</strong>
+                                    </div>
+                                    <div class="chart-track">
+                                        <div id="bar-agua" class="chart-bar"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="insight-card">
+                                <h4 id="problem-title">💡 Plano de Ação Recomendado</h4>
+                                <p id="out-diagnostico"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-curiosidades" class="app-view">
+                <header class="app-header">
+                    <div class="header-title">
+                        <h1>Curiosidades Fascinantes do Agro Moderno</h1>
+                        <p class="tts-text">Fatos curtos e impactantes sobre como o campo e as cidades operam juntos.
+                        </p>
+                    </div>
+                </header>
+
+                <section class="dictionary-grid">
+                    <div class="concept-card">
+                        <div class="concept-badge">Logística Viva</div>
+                        <h3>A Rota do Tomate</h3>
+                        <p>Um fruto viaja, em média, mais de 250 km antes de chegar ao prato de um morador da cidade.
+                            Sem refrigeração, 30% da carga é perdida no caminho.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-badge">Ciência do Solo</div>
+                        <h3>Plantas Conectadas</h3>
+                        <p>Sensores modernos fincados na terra avisam o celular do produtor rural sobre a umidade exata
+                            do solo, poupando até 40% de água desnecessária.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-badge">Cidades Inteligentes</div>
+                        <h3>Fazendas nos Céus</h3>
+                        <p>Prédios urbanos em grandes capitais usam telhados desativados para o cultivo de hortaliças.
+                            Isso reduz a poluição de caminhões que trariam a comida de longe.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-badge">Bio-Defesa</div>
+                        <h3>Insetos do Bem</h3>
+                        <p>Muitas lavouras modernas usam joaninhas e microvespas criadas em laboratório para combater
+                            pragas, eliminando defensivos químicos pesados.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-badge">Riqueza Invisível</div>
+                        <h3>Microbioma Terrestre</h3>
+                        <p>Uma única colher de chá de solo agrícola saudável contém mais microrganismos vivos benéficos
+                            do que o número total de seres humanos na Terra.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-badge">Sustentabilidade pura</div>
+                        <h3>Energia do Próprio Solo</h3>
+                        <p>Muitas fazendas do Paraná utilizam o esterco de animais e restos de colheita para gerar o
+                            biogás, produzindo eletricidade limpa para toda a propriedade rural.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div id="view-educativo" class="app-view">
+                <header class="app-header">
+                    <div class="header-title">
+                        <h1>Glossário e Conceitos Ecológicos</h1>
+                        <p class="tts-text">Entenda os principais termos do equilíbrio sustentável de forma
+                            simplificada.</p>
+                    </div>
+                </header>
+
+                <section class="dictionary-grid">
+                    <div class="concept-card">
+                        <div class="concept-badge">Conservação</div>
+                        <h3>Plantio Direto</h3>
+                        <p>Método de cultivo onde as sementes são inseridas diretamente na palha da colheita anterior,
+                            sem revirar a terra. Protege o solo da erosão, vento e mantém a umidade natural.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-badge">Mercado Interno</div>
+                        <h3>Circuitos Curtos</h3>
+                        <p>Cadeias de comercialização de alimentos onde a distância entre o produtor e o consumidor
+                            final é reduzida. Reduz gastos de frete e garante alimentos mais frescos.</p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-badge">Governança Humana</div>
+                        <h3>Critérios ESG</h3>
+                        <p>Do inglês (Environmental, Social, and Governance). Avalia se uma produção agrícola ou
+                            industrial cumpre as leis da natureza, respeita seus funcionários e trabalha honestamente.
+                        </p>
+                    </div>
+                    <div class="concept-card">
+                        <div class="concept-badge">Gestão da Água</div>
+                        <h3>Pegada Hídrica embutida</h3>
+                        <p>A quantidade total de água doce consumida direta e indiretamente para a produção e entrega
+                            final de um quilo de determinado alimento ao consumidor urbano.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div id="view-sobre" class="app-view">
+                <header class="app-header">
+                    <div class="header-title">
+                        <h1>Ficha Técnica e Autoria do Projeto</h1>
+                        <p class="tts-text">Informações sobre a criação deste ecossistema computacional.</p>
+                    </div>
+                </header>
+
+                <div class="about-grid">
+                    <div class="info-card image-accent">
+                        <h2>🌱 Nosso Propósito Coletivo</h2>
+                        <p>Este hub digital prova que os dados analíticos aproximam as pessoas da preservação ecológica.
+                            Ao entender os números da cadeia produtiva, tornamo-nos capazes de apoiar o equilíbrio
+                            saudável proposto pelo Agrinho.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h2>✨ Equipe de Desenvolvimento Oficial</h2>
+                        <table class="tech-table">
+                            <tr>
+                                <td><strong>Desenvolvedoras Principais:</strong></td>
+                                <td><mark
+                                        style="background: var(--color-primary-glow); color: var(--color-primary); padding: 4px 8px; border-radius: 4px; font-weight: bold;">Ester
+                                        Locatelli e Amanda Groff</mark></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Escopo do Projeto:</strong></td>
+                                <td>Gêmeo Digital e Simulador de Impacto Social</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contextualização:</strong></td>
+                                <td>Programa Agrinho Paraná 2026</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="app-footer">
+                <p>&copy; 2026 AgroSynapse Pro. Desenvolvido com orgulho por Ester Locatelli e Amanda Groff para o
+                    Agrinho 2026.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
